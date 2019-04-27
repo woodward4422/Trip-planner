@@ -10,11 +10,11 @@
 		7A47B759227371E0000AEE83 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B758227371E0000AEE83 /* User.swift */; };
 		7A47B75C2273750E000AEE83 /* UserDefaults+Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B75B2273750E000AEE83 /* UserDefaults+Keys.swift */; };
 		7A47B75E22737891000AEE83 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 7A47B75D22737891000AEE83 /* GoogleService-Info.plist */; };
-		7A47B76122737E7A000AEE83 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B76022737E7A000AEE83 /* Persistence.swift */; };
 		7A47B76322738207000AEE83 /* UserFile+Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B76222738207000AEE83 /* UserFile+Keys.swift */; };
 		7A47B76522741C98000AEE83 /* UserPreferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B76422741C98000AEE83 /* UserPreferences.swift */; };
 		7A47B789227421B6000AEE83 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B787227421B6000AEE83 /* Model.xcdatamodeld */; };
 		7A47B78B22742211000AEE83 /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B78A22742211000AEE83 /* AddTripViewController.swift */; };
+		7A47B78D22742DE4000AEE83 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B78C22742DE4000AEE83 /* CoreDataStack.swift */; };
 		7A9D7E91227356DD008390DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9D7E90227356DD008390DE /* AppDelegate.swift */; };
 		7A9D7E93227356DD008390DE /* TripsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9D7E92227356DD008390DE /* TripsHomeViewController.swift */; };
 		7A9D7E98227356E0008390DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A9D7E97227356E0008390DE /* Assets.xcassets */; };
@@ -27,11 +27,11 @@
 		7A47B758227371E0000AEE83 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7A47B75B2273750E000AEE83 /* UserDefaults+Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Keys.swift"; sourceTree = "<group>"; };
 		7A47B75D22737891000AEE83 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		7A47B76022737E7A000AEE83 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		7A47B76222738207000AEE83 /* UserFile+Keys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserFile+Keys.swift"; sourceTree = "<group>"; };
 		7A47B76422741C98000AEE83 /* UserPreferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferences.swift; sourceTree = "<group>"; };
 		7A47B788227421B6000AEE83 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		7A47B78A22742211000AEE83 /* AddTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripViewController.swift; sourceTree = "<group>"; };
+		7A47B78C22742DE4000AEE83 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		7A9D7E8D227356DD008390DE /* TripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9D7E90227356DD008390DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A9D7E92227356DD008390DE /* TripsHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsHomeViewController.swift; sourceTree = "<group>"; };
@@ -99,8 +99,8 @@
 		7A47B75F22737B96000AEE83 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				7A47B76022737E7A000AEE83 /* Persistence.swift */,
 				7A47B76422741C98000AEE83 /* UserPreferences.swift */,
+				7A47B78C22742DE4000AEE83 /* CoreDataStack.swift */,
 			);
 			path = Persistence;
 			sourceTree = "<group>";
@@ -312,12 +312,12 @@
 				7A47B75C2273750E000AEE83 /* UserDefaults+Keys.swift in Sources */,
 				7A47B76522741C98000AEE83 /* UserPreferences.swift in Sources */,
 				7A9D7E93227356DD008390DE /* TripsHomeViewController.swift in Sources */,
+				7A47B78D22742DE4000AEE83 /* CoreDataStack.swift in Sources */,
 				7A47B789227421B6000AEE83 /* Model.xcdatamodeld in Sources */,
 				7A47B76322738207000AEE83 /* UserFile+Keys.swift in Sources */,
 				7A47B78B22742211000AEE83 /* AddTripViewController.swift in Sources */,
 				7A9D7E91227356DD008390DE /* AppDelegate.swift in Sources */,
 				7A47B759227371E0000AEE83 /* User.swift in Sources */,
-				7A47B76122737E7A000AEE83 /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import CoreData
 
 class AddTripViewController: UIViewController {
     weak var tripNameStaticLabel: UILabel!
     weak var tripField: UITextField!
+    var persistenceStack = CoreDataStack()
     override func loadView() {
         super.loadView()
         setupStaticLabel()
@@ -69,6 +71,16 @@ class AddTripViewController: UIViewController {
     }
     @objc private func saveButtonPressed() {
         tripField.resignFirstResponder()
+        guard let tripTitle = tripField.text else {
+            let alertVC = UIAlertController(title: "Please add a title", message: "Add a title for your trip", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
+            alertVC.addAction(cancelAction)
+            self.present(alertVC,animated: false)
+            return
+        }
+        let newTrip = Trip(context:persistenceStack.persistentContainer.viewContext)
+        newTrip.tripName = tripField.text
+        persistenceStack.saveContext()
         dismiss(animated: true, completion: nil)
     }
 }
