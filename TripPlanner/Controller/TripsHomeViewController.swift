@@ -36,13 +36,13 @@ class TripsHomeViewController: UITableViewController {
         } catch {
             print(error)
         }
+        tableView.reloadData()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadData()
-        tableView.reloadData()
     }
-    private func setupNavBar() {
+    internal func setupNavBar() {
         let addNavButton = UIBarButtonItem(
             barButtonSystemItem: UIBarButtonItem.SystemItem.add,
             target: self,
@@ -57,7 +57,7 @@ class TripsHomeViewController: UITableViewController {
         self.present(navigationVC, animated: false, completion: nil)
     }
 }
-extension TripsHomeViewController {
+extension TripsHomeViewController: NSFetchedResultsControllerDelegate {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return fetchedResultsController.sections?.count ?? 0
     }
@@ -73,5 +73,57 @@ extension TripsHomeViewController {
         let cellTrip = fetchedResultsController.object(at: indexPath)
         cell.textLabel!.text = cellTrip.tripName!
         return cell
+    }
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCell.EditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            persistenceStack.deleteTrip(trip: fetchedResultsController.object(at: indexPath))
+            loadData()
+        }
+    }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let trip = fetchedResultsController.object(at: indexPath)
+        let waypointsVC = WaypointViewController()
+        waypointsVC.trip = trip
+        self.navigationController?.pushViewController(waypointsVC, animated: true)
+    }
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.beginUpdates()
+    }
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange sectionInfo: NSFetchedResultsSectionInfo,
+                    atSectionIndex sectionIndex: Int,
+                    for type: NSFetchedResultsChangeType) {
+        switch type {
+        case.insert:
+            self.tableView.insertSections(NSIndexSet(index: sectionIndex) as IndexSet, with: .fade)
+        case .delete:
+            self.tableView.deleteSections(NSIndexSet(index: sectionIndex) as IndexSet, with: .fade)
+        default:
+            break
+        }
+    }
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
+                    didChange anObject: Any,
+                    at indexPath: IndexPath?,
+                    for type: NSFetchedResultsChangeType,
+                    newIndexPath: IndexPath?) {
+        switch type {
+        case .insert:
+            self.tableView.insertRows(at: [newIndexPath!], with: .fade)
+        case .delete:
+            self.tableView.deleteRows(at: [newIndexPath!], with: .fade)
+        case .update:
+            self.tableView.reloadRows(at: [newIndexPath!], with: .fade)
+        case .move:
+            self.tableView.deleteRows(at: [newIndexPath!], with: .fade)
+            self.tableView.insertRows(at: [newIndexPath!], with: .fade)
+        default:
+            break
+        }
+    }
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        self.tableView.endUpdates()
     }
 }

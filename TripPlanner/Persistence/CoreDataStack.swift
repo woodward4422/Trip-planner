@@ -37,4 +37,8 @@ struct CoreDataStack {
             }
         }
     }
+    mutating func deleteTrip(trip: Trip) {
+        managedContext.delete(trip)
+        saveContext()
+    }
 }

@@ -15,6 +15,8 @@
 		7A47B789227421B6000AEE83 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B787227421B6000AEE83 /* Model.xcdatamodeld */; };
 		7A47B78B22742211000AEE83 /* AddTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B78A22742211000AEE83 /* AddTripViewController.swift */; };
 		7A47B78D22742DE4000AEE83 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B78C22742DE4000AEE83 /* CoreDataStack.swift */; };
+		7A47B7932274FF2D000AEE83 /* UIConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B7922274FF2D000AEE83 /* UIConfigurable.swift */; };
+		7A47B7952274FF7E000AEE83 /* WaypointViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A47B7942274FF7E000AEE83 /* WaypointViewController.swift */; };
 		7A9D7E91227356DD008390DE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9D7E90227356DD008390DE /* AppDelegate.swift */; };
 		7A9D7E93227356DD008390DE /* TripsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9D7E92227356DD008390DE /* TripsHomeViewController.swift */; };
 		7A9D7E98227356E0008390DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A9D7E97227356E0008390DE /* Assets.xcassets */; };
@@ -32,6 +34,8 @@
 		7A47B788227421B6000AEE83 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		7A47B78A22742211000AEE83 /* AddTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTripViewController.swift; sourceTree = "<group>"; };
 		7A47B78C22742DE4000AEE83 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		7A47B7922274FF2D000AEE83 /* UIConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIConfigurable.swift; sourceTree = "<group>"; };
+		7A47B7942274FF7E000AEE83 /* WaypointViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaypointViewController.swift; sourceTree = "<group>"; };
 		7A9D7E8D227356DD008390DE /* TripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A9D7E90227356DD008390DE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7A9D7E92227356DD008390DE /* TripsHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsHomeViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +80,7 @@
 			children = (
 				7A9D7E92227356DD008390DE /* TripsHomeViewController.swift */,
 				7A47B78A22742211000AEE83 /* AddTripViewController.swift */,
+				7A47B7942274FF7E000AEE83 /* WaypointViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -83,6 +88,7 @@
 		7A47B757227371D2000AEE83 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7A47B7922274FF2D000AEE83 /* UIConfigurable.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -103,6 +109,13 @@
 				7A47B78C22742DE4000AEE83 /* CoreDataStack.swift */,
 			);
 			path = Persistence;
+			sourceTree = "<group>";
+		};
+		7A47B7962274FFBF000AEE83 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		7A9D7E84227356DD008390DE = {
@@ -126,6 +139,7 @@
 		7A9D7E8F227356DD008390DE /* TripPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				7A47B7962274FFBF000AEE83 /* Extensions */,
 				7A47B75F22737B96000AEE83 /* Persistence */,
 				7A47B75D22737891000AEE83 /* GoogleService-Info.plist */,
 				7A47B75A227374FE000AEE83 /* Keys */,
@@ -309,8 +323,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A47B7932274FF2D000AEE83 /* UIConfigurable.swift in Sources */,
 				7A47B75C2273750E000AEE83 /* UserDefaults+Keys.swift in Sources */,
 				7A47B76522741C98000AEE83 /* UserPreferences.swift in Sources */,
+				7A47B7952274FF7E000AEE83 /* WaypointViewController.swift in Sources */,
 				7A9D7E93227356DD008390DE /* TripsHomeViewController.swift in Sources */,
 				7A47B78D22742DE4000AEE83 /* CoreDataStack.swift in Sources */,
 				7A47B789227421B6000AEE83 /* Model.xcdatamodeld in Sources */,
