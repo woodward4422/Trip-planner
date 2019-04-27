@@ -75,10 +75,10 @@ class AddTripViewController: UIViewController {
             let alertVC = UIAlertController(title: "Please add a title", message: "Add a title for your trip", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
             alertVC.addAction(cancelAction)
-            self.present(alertVC,animated: false)
+            self.present(alertVC, animated: false)
             return
         }
-        let newTrip = Trip(context:persistenceStack.persistentContainer.viewContext)
+        let newTrip = Trip(context: persistenceStack.persistentContainer.viewContext)
         newTrip.tripName = tripField.text
         persistenceStack.saveContext()
         dismiss(animated: true, completion: nil)
