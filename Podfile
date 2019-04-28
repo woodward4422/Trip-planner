@@ -8,5 +8,6 @@ target 'TripPlanner' do
   # Pods for TripPlanner
   pod 'SwiftLint'
   pod 'Firebase/Core'
-
+  pod 'GoogleMaps'
+  pod 'GooglePlaces'
 end

@@ -9,6 +9,8 @@
 import UIKit
 import Firebase
 import CoreData
+import GoogleMaps
+import GooglePlaces
 // swiftlint:disable all
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         saveCurrentUser()
+        GMSServices.provideAPIKey("AIzaSyDKD1LejkYXSgB9yI1IP4YwI4GovuCDsYc")
+        GMSPlacesClient.provideAPIKey("AIzaSyDKD1LejkYXSgB9yI1IP4YwI4GovuCDsYc")
         let navVC = UINavigationController()
         let tripsHomeVC = TripsHomeViewController()
         navVC.viewControllers = [tripsHomeVC]

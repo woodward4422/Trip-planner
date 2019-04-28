@@ -7,13 +7,15 @@
 //
 
 import UIKit
-
+import CoreData
 class WaypointViewController: UITableViewController, UIConfigurable {
     var trip: Trip!
+    var persistenceStack = CoreDataStack()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         setupNavBar()
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "waypointCell")
         // Do any additional setup after loading the view.
     }
     func setupNavBar() {
@@ -25,6 +27,22 @@ class WaypointViewController: UITableViewController, UIConfigurable {
         self.title = trip.tripName
     }
     @objc private func addButtonPressed() {
-        
+        let addWaypointVC = AddWaypointViewController()
+        let navVC = UINavigationController()
+        navVC.viewControllers = [addWaypointVC]
+        present(navVC,animated: false)
+    }
+}
+
+extension WaypointViewController {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return trip.waypoint?.count ?? 0
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "waypointCell")
+        let wayPoints = self.trip.waypoints
+        guard let wayPointsUnwrapped = wayPoints else {return cell!}
+        cell?.textLabel?.text = wayPointsUnwrapped[indexPath.row].waypointName
+        return cell!
     }
 }
