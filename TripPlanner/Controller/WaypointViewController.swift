@@ -28,6 +28,7 @@ class WaypointViewController: UITableViewController, UIConfigurable {
     }
     @objc private func addButtonPressed() {
         let addWaypointVC = AddWaypointViewController()
+        addWaypointVC.trip = self.trip
         let navVC = UINavigationController()
         navVC.viewControllers = [addWaypointVC]
         present(navVC,animated: false)
