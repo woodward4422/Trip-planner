@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension Waypoint {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Waypoint> {

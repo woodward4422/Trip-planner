@@ -31,7 +31,7 @@ class WaypointViewController: UITableViewController, UIConfigurable {
         addWaypointVC.trip = self.trip
         let navVC = UINavigationController()
         navVC.viewControllers = [addWaypointVC]
-        present(navVC,animated: false)
+        present(navVC, animated: false)
     }
 }
 

@@ -72,7 +72,9 @@ class AddTripViewController: UIViewController {
     @objc private func saveButtonPressed() {
         tripField.resignFirstResponder()
         guard let tripTitle = tripField.text else {
-            let alertVC = UIAlertController(title: "Please add a title", message: "Add a title for your trip", preferredStyle: .alert)
+            let alertVC = UIAlertController(title: "Please add a title",
+                                            message: "Add a title for your trip",
+                                            preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
             alertVC.addAction(cancelAction)
             self.present(alertVC, animated: false)

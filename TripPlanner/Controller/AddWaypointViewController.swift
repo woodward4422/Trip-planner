@@ -38,7 +38,7 @@ class AddWaypointViewController: UIViewController {
             topView.topAnchor.constraint(equalTo: self.view.topAnchor),
             topView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor),
             topView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
-            topView.heightAnchor.constraint(equalToConstant: self.view.frame.height/2),
+            topView.heightAnchor.constraint(equalToConstant: self.view.frame.height/2)
             ])
         topView.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
         self.topView = topView
@@ -61,7 +61,7 @@ class AddWaypointViewController: UIViewController {
         self.topView.addSubview(changeWayPoint)
         NSLayoutConstraint.activate([
             changeWayPoint.centerXAnchor.constraint(equalTo: topView.centerXAnchor),
-            changeWayPoint.topAnchor.constraint(equalTo: waypointLabel.bottomAnchor, constant: 30),
+            changeWayPoint.topAnchor.constraint(equalTo: waypointLabel.bottomAnchor, constant: 30)
             ])
         changeWayPoint.sizeToFit()
         changeWayPoint.text = "Tap to select a waypoint"
@@ -84,7 +84,7 @@ class AddWaypointViewController: UIViewController {
         NSLayoutConstraint.activate([
             waypointLabel.centerXAnchor.constraint(equalTo: topView.centerXAnchor),
             waypointLabel.centerYAnchor.constraint(equalTo: topView.centerYAnchor),
-            waypointLabel.heightAnchor.constraint(equalToConstant: 30),
+            waypointLabel.heightAnchor.constraint(equalToConstant: 30)
             ])
         waypointLabel.sizeToFit()
         if let destinationWayPoint = waypoint?.waypointName {
@@ -110,7 +110,6 @@ class AddWaypointViewController: UIViewController {
         self.title = "Add Waypoint"
     }
     @objc private func saveButtonPressed() {
-        
     }
     @objc private func cancelButtonPressed() {
         dismiss(animated: false, completion: nil)
