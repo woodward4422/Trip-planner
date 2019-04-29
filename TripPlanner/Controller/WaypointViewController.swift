@@ -11,12 +11,36 @@ import CoreData
 class WaypointViewController: UITableViewController, UIConfigurable {
     var trip: Trip!
     var persistenceStack = CoreDataStack()
+    lazy var fetchedResultsController: NSFetchedResultsController<Waypoint> = {
+        let fetchRequest: NSFetchRequest<Waypoint> = Waypoint.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "trip = %@", trip)
+        let sortDescriptor = NSSortDescriptor(key: "waypointName", ascending: true)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest,
+                                                                  managedObjectContext: persistenceStack.managedContext,
+                                                                  sectionNameKeyPath: nil,
+                                                                  cacheName: nil)
+        return fetchedResultsController
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white
         setupNavBar()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "waypointCell")
+        loadData()
         // Do any additional setup after loading the view.
+    }
+    private func loadData() {
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            print(error)
+        }
+        tableView.reloadData()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadData()
     }
     func setupNavBar() {
         let rightNavBarItem = UIBarButtonItem(title: "Add",
@@ -36,14 +60,16 @@ class WaypointViewController: UITableViewController, UIConfigurable {
 }
 extension WaypointViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return trip.waypoint?.count ?? 0
+        guard let sectionInfo =
+            fetchedResultsController.sections?[section] else {
+                return 0
+        }
+        return sectionInfo.numberOfObjects
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "waypointCell")
-        let wayPoints = self.trip.waypoints
-        guard let wayPointsUnwrapped = wayPoints else {return cell!}
-        cell?.textLabel?.text = wayPointsUnwrapped[indexPath.row].waypointName
+        let cellWaypoint = fetchedResultsController.object(at: indexPath)
+        cell?.textLabel?.text = cellWaypoint.waypointName
         return cell!
     }
 }
-

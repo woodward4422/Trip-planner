@@ -22,6 +22,7 @@ class AddWaypointViewController: UIViewController {
     weak var changeWayPoint: UILabel!
     weak var mapView: GMSMapView!
     weak var cameraPosition: GMSCameraPosition?
+    var persistenceStack = CoreDataStack()
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
@@ -114,7 +115,11 @@ class AddWaypointViewController: UIViewController {
         self.title = "Add Waypoint"
     }
     @objc private func saveButtonPressed() {
-        
+        if let waypoint = self.waypoint {
+            trip.addToWaypoint(waypoint)
+            persistenceStack.saveContext()
+        }
+        self.dismiss(animated: true, completion: nil)
     }
     @objc private func cancelButtonPressed() {
         dismiss(animated: false, completion: nil)
@@ -130,10 +135,13 @@ extension AddWaypointViewController: GMSAutocompleteViewControllerDelegate {
         marker.snippet = "New Waypoint!"
         marker.map = mapView
         mapView.camera = GMSCameraPosition(target: place.coordinate, zoom: 15.0)
-        waypoint = Waypoint(latitude: place.coordinate.latitude as Double,
-                            longitude: place.coordinate.longitude as Double,
-                            waypointName: place.formattedAddress,
-                            trip: self.trip)
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        guard let context = appDelegate?.persistentContainer.viewContext else{ return  }
+        let newWaypoint = Waypoint(context: context)
+        newWaypoint.latitude = place.coordinate.latitude as Double
+        newWaypoint.longitude = place.coordinate.longitude as Double
+        newWaypoint.waypointName = place.formattedAddress
+        self.waypoint = newWaypoint
         self.navigationController?.popViewController(animated: false)
     }
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {

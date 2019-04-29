@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 struct CoreDataStack {
     let persistentContainer: NSPersistentContainer = {
