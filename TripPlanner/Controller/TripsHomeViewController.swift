@@ -52,6 +52,7 @@ class TripsHomeViewController: UITableViewController {
     }
     @objc private func addTripButtonPressed() {
         let addTripVC = AddTripViewController()
+        addTripVC.persistenceStack = persistenceStack
         let navigationVC = UINavigationController()
         navigationVC.viewControllers = [addTripVC]
         self.present(navigationVC, animated: false, completion: nil)
@@ -85,6 +86,7 @@ extension TripsHomeViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let trip = fetchedResultsController.object(at: indexPath)
         let waypointsVC = WaypointViewController()
+        waypointsVC.persistenceStack = persistenceStack
         waypointsVC.trip = trip
         self.navigationController?.pushViewController(waypointsVC, animated: true)
     }

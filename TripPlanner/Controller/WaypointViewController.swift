@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 class WaypointViewController: UITableViewController, UIConfigurable {
     var trip: Trip!
-    var persistenceStack = CoreDataStack()
+    var persistenceStack: CoreDataStack!
     lazy var fetchedResultsController: NSFetchedResultsController<Waypoint> = {
         let fetchRequest: NSFetchRequest<Waypoint> = Waypoint.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "trip = %@", trip)
@@ -53,6 +53,7 @@ class WaypointViewController: UITableViewController, UIConfigurable {
     @objc private func addButtonPressed() {
         let addWaypointVC = AddWaypointViewController()
         addWaypointVC.trip = self.trip
+        addWaypointVC.persistenceStack = persistenceStack
         let navVC = UINavigationController()
         navVC.viewControllers = [addWaypointVC]
         present(navVC, animated: false)

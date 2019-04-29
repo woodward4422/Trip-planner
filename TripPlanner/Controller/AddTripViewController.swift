@@ -12,7 +12,7 @@ import CoreData
 class AddTripViewController: UIViewController {
     weak var tripNameStaticLabel: UILabel!
     weak var tripField: UITextField!
-    var persistenceStack = CoreDataStack()
+    var persistenceStack: CoreDataStack!
     override func loadView() {
         super.loadView()
         setupStaticLabel()
@@ -80,7 +80,7 @@ class AddTripViewController: UIViewController {
             self.present(alertVC, animated: false)
             return
         }
-        let newTrip = Trip(context: persistenceStack.persistentContainer.viewContext)
+        let newTrip = Trip(context: persistenceStack.managedContext)
         newTrip.tripName = tripField.text
         persistenceStack.saveContext()
         dismiss(animated: true, completion: nil)

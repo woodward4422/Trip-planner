@@ -25,10 +25,12 @@ struct CoreDataStack {
         return container
     }()
     lazy var managedContext: NSManagedObjectContext = {
-        return self.persistentContainer.viewContext
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        guard let context = appDelegate?.persistentContainer.viewContext else{ fatalError("The Context is Nil!") }
+        return context
     }()
-    func saveContext() {
-        let viewContext = persistentContainer.viewContext
+    mutating func saveContext() {
+        let viewContext = managedContext
         if viewContext.hasChanges {
             do {
                 try viewContext.save()

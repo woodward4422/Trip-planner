@@ -21,8 +21,7 @@ class AddWaypointViewController: UIViewController {
     weak var waypointLabel: UILabel!
     weak var changeWayPoint: UILabel!
     weak var mapView: GMSMapView!
-    weak var cameraPosition: GMSCameraPosition?
-    var persistenceStack = CoreDataStack()
+    var persistenceStack: CoreDataStack!
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
@@ -135,9 +134,7 @@ extension AddWaypointViewController: GMSAutocompleteViewControllerDelegate {
         marker.snippet = "New Waypoint!"
         marker.map = mapView
         mapView.camera = GMSCameraPosition(target: place.coordinate, zoom: 15.0)
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        guard let context = appDelegate?.persistentContainer.viewContext else{ return  }
-        let newWaypoint = Waypoint(context: context)
+        let newWaypoint = Waypoint(context: persistenceStack.managedContext)
         newWaypoint.latitude = place.coordinate.latitude as Double
         newWaypoint.longitude = place.coordinate.longitude as Double
         newWaypoint.waypointName = place.formattedAddress
