@@ -9,10 +9,14 @@
 import UIKit
 import GoogleMaps
 import GooglePlaces
+protocol WayPointDelegate: class {
+    func wayPointSelected(waypoint: Waypoint)
+}
 
 class AddWaypointViewController: UIViewController {
     var waypoint: Waypoint?
     var trip: Trip!
+    weak var waypointDelegate: WayPointDelegate!
     weak var topView: UIView!
     weak var waypointLabel: UILabel!
     weak var changeWayPoint: UILabel!
@@ -110,6 +114,7 @@ class AddWaypointViewController: UIViewController {
         self.title = "Add Waypoint"
     }
     @objc private func saveButtonPressed() {
+        
     }
     @objc private func cancelButtonPressed() {
         dismiss(animated: false, completion: nil)
@@ -119,7 +124,17 @@ class AddWaypointViewController: UIViewController {
 extension AddWaypointViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         self.waypointLabel.text = place.formattedAddress
-        self.dismiss(animated: true, completion: nil)
+        let marker = GMSMarker()
+        marker.position = place.coordinate
+        marker.title = place.formattedAddress
+        marker.snippet = "New Waypoint!"
+        marker.map = mapView
+        mapView.camera = GMSCameraPosition(target: place.coordinate, zoom: 15.0)
+        waypoint = Waypoint(latitude: place.coordinate.latitude as Double,
+                            longitude: place.coordinate.longitude as Double,
+                            waypointName: place.formattedAddress,
+                            trip: self.trip)
+        self.navigationController?.popViewController(animated: false)
     }
     func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
         print("Error with Autocomplete: \(error.localizedDescription)")

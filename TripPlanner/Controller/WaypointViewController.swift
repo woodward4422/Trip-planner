@@ -34,7 +34,6 @@ class WaypointViewController: UITableViewController, UIConfigurable {
         present(navVC, animated: false)
     }
 }
-
 extension WaypointViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trip.waypoint?.count ?? 0
@@ -47,3 +46,4 @@ extension WaypointViewController {
         return cell!
     }
 }
+
