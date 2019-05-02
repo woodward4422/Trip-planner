@@ -21,6 +21,7 @@ class AddWaypointViewController: UIViewController {
     weak var waypointLabel: UILabel!
     weak var changeWayPoint: UILabel!
     weak var mapView: GMSMapView!
+
     var persistenceStack: CoreDataStack!
     override func viewDidLoad() {
         super.viewDidLoad()

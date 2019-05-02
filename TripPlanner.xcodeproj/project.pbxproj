@@ -26,6 +26,7 @@
 		7A9D7E93227356DD008390DE /* TripsHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9D7E92227356DD008390DE /* TripsHomeViewController.swift */; };
 		7A9D7E98227356E0008390DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A9D7E97227356E0008390DE /* Assets.xcassets */; };
 		7A9D7E9B227356E0008390DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A9D7E99227356E0008390DE /* LaunchScreen.storyboard */; };
+		7AF8BEFA227A9FFF007A3D41 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF8BEF9227A9FFF007A3D41 /* SettingsViewController.swift */; };
 		F337E3F95D33A0EBBC5F8843 /* Pods_TripPlanner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C55D80D38E8E646636015B79 /* Pods_TripPlanner.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		7A9D7E97227356E0008390DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A9D7E9A227356E0008390DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A9D7E9C227356E0008390DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7AF8BEF9227A9FFF007A3D41 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		C55D80D38E8E646636015B79 /* Pods_TripPlanner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TripPlanner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8D84A783C748F0AA5898B20 /* Pods-TripPlanner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripPlanner.release.xcconfig"; path = "Pods/Target Support Files/Pods-TripPlanner/Pods-TripPlanner.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +94,7 @@
 				7A47B78A22742211000AEE83 /* AddTripViewController.swift */,
 				7A47B7942274FF7E000AEE83 /* WaypointViewController.swift */,
 				7A47B7BB22751F2C000AEE83 /* AddWaypointViewController.swift */,
+				7AF8BEF9227A9FFF007A3D41 /* SettingsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				7A47B7B822751370000AEE83 /* Trip+CoreDataProperties.swift in Sources */,
 				7A47B78B22742211000AEE83 /* AddTripViewController.swift in Sources */,
 				7A9D7E91227356DD008390DE /* AppDelegate.swift in Sources */,
+				7AF8BEFA227A9FFF007A3D41 /* SettingsViewController.swift in Sources */,
 				7A47B7B722751370000AEE83 /* Trip+CoreDataClass.swift in Sources */,
 				7A47B7BC22751F2C000AEE83 /* AddWaypointViewController.swift in Sources */,
 				7A47B7BA22751370000AEE83 /* Waypoint+CoreDataProperties.swift in Sources */,

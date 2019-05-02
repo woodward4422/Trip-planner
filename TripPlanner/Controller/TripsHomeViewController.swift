@@ -47,8 +47,17 @@ class TripsHomeViewController: UITableViewController {
             barButtonSystemItem: UIBarButtonItem.SystemItem.add,
             target: self,
             action: #selector(addTripButtonPressed))
+        let settingsNavButton = UIBarButtonItem(barButtonSystemItem: .edit,
+                                                target: self,
+                                                action: #selector(settingsButtonPressed))
         self.navigationItem.setRightBarButton(addNavButton, animated: false)
+        self.navigationItem.setLeftBarButton(settingsNavButton, animated: false)
         self.title = "Planned Trips"
+    }
+    @objc private func settingsButtonPressed() {
+        let settingsVC = SettingsViewController()
+        self.navigationController?.pushViewController(settingsVC, animated: true)
+        
     }
     @objc private func addTripButtonPressed() {
         let addTripVC = AddTripViewController()

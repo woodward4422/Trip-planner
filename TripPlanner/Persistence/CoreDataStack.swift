@@ -44,4 +44,8 @@ struct CoreDataStack {
         managedContext.delete(trip)
         saveContext()
     }
+    mutating func deleteWaypoint(waypoint: Waypoint) {
+        managedContext.delete(waypoint)
+        saveContext()
+    }
 }

@@ -67,6 +67,14 @@ extension WaypointViewController {
         }
         return sectionInfo.numberOfObjects
     }
+    override func tableView(_ tableView: UITableView,
+                            commit editingStyle: UITableViewCell.EditingStyle,
+                            forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            persistenceStack.deleteWaypoint(waypoint: fetchedResultsController.object(at: indexPath))
+            loadData()
+        }
+    }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "waypointCell")
         let cellWaypoint = fetchedResultsController.object(at: indexPath)

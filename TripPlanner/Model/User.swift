@@ -38,12 +38,6 @@ class User: NSObject, NSSecureCoding {
                   currencyMetrics: currencyMetrics,
                   isDarkMode: isDarkMode)
     }
-//    func dictValues() -> [String:Any] {
-//        return ["name": self.name,
-//                "distanceMetrics": self.distanceMetrics,
-//                "currencyMetrics": self.currencyMetrics,
-//                "isDarkMode": self.isDarkMode]
-//    }
     func archiveUser() -> Data {
         let archivedObject = NSKeyedArchiver.archivedData(withRootObject: self)
         return archivedObject
